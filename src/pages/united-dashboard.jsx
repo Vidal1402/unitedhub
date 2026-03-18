@@ -41,7 +41,7 @@ const C = {
 const ThemeCtx = createContext(DARK);
 const useT = () => useContext(ThemeCtx);
 
-const API_URL = import.meta.env.VITE_API_URL || "";
+const API_URL = import.meta.env.VITE_API_URL || "https://united-hub-3a6p.onrender.com";
 
 function apiGet(token, path) {
   if (!API_URL || !token) return Promise.reject(new Error("API não configurada"));
