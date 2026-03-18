@@ -2,7 +2,7 @@ import { useState, useEffect, createContext, useContext } from "react";
 import { useAuth } from "../auth/AuthContext.jsx";
 import { formatCurrency, formatPhone, buildCSV, formatCurrencyInput, parseCurrencyInput, formatDateInput, parseDateInput, formatPhoneInput, parsePhoneInput } from "../utils/format.js";
 
-const API_URL = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+const API_URL = (import.meta.env.VITE_API_URL || "https://united-hub-3a6p.onrender.com").replace(/\/$/, "");
 const FETCH_TIMEOUT_MS = 20000;
 
 function fetchWithTimeout(url, options, ms = FETCH_TIMEOUT_MS) {
