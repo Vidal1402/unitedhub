@@ -54,7 +54,7 @@ export default function Login() {
           alt="Dashboard analytics"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(0,0%,2%)]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[hsla(0,0%,2%,0.6)] to-transparent" />
         <div className="absolute bottom-12 left-12 max-w-md">
           <h2 className="text-white text-3xl font-bold leading-tight mb-3">
             Gerencie sua performance em um só lugar.
