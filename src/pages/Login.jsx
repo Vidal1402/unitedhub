@@ -82,14 +82,14 @@ export default function Login() {
             fontWeight: 700,
             lineHeight: 1.3,
             marginBottom: 12,
-            fontFamily: 'system-ui, -apple-system, sans-serif',
+            
           }}>
             Gerencie sua performance em um só lugar.
           </h2>
           <p style={{
             color: 'rgba(255,255,255,0.5)',
             fontSize: 14,
-            fontFamily: 'system-ui, -apple-system, sans-serif',
+            
           }}>
             Produção, métricas e resultados — tudo no United Growth Hub.
           </p>
@@ -154,7 +154,7 @@ export default function Login() {
                   fontSize: 14,
                   outline: 'none',
                   boxSizing: 'border-box',
-                  fontFamily: 'system-ui, sans-serif',
+                  
                 }}
               />
             </div>
@@ -179,7 +179,7 @@ export default function Login() {
                   fontSize: 14,
                   outline: 'none',
                   boxSizing: 'border-box',
-                  fontFamily: 'system-ui, sans-serif',
+                  
                 }}
               />
             </div>
@@ -211,7 +211,7 @@ export default function Login() {
                 fontSize: 14,
                 cursor: loading ? 'default' : 'pointer',
                 opacity: loading ? 0.5 : 1,
-                fontFamily: 'system-ui, sans-serif',
+                
               }}
             >
               {loading ? 'Entrando...' : 'Entrar'}
