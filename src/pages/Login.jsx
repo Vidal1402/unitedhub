@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext.jsx';
+import loginBg from '../assets/login-bg.jpg';
 
 const API_URL = import.meta.env.VITE_API_URL || 'https://united-hub-3a6p.onrender.com';
 
@@ -31,7 +32,6 @@ export default function Login() {
         throw new Error(body?.error || 'Falha no login');
       }
       const data = await res.json().catch(() => ({}));
-      // esperado: { token, user: { role, can_producao, can_performance, ... } }
       login(data.token, data.user);
       if (data.user?.role === 'admin') {
         navigate('/admin', { replace: true });
@@ -46,117 +46,91 @@ export default function Login() {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: '#050505',
-      padding: 24,
-      fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-    }}>
-      <div style={{
-        width: '100%',
-        maxWidth: 380,
-        background: '#111111',
-        borderRadius: 16,
-        padding: '26px 26px 22px',
-        border: '1px solid rgba(255,255,255,0.08)',
-        boxShadow: '0 24px 80px rgba(0,0,0,0.8)',
-        color: '#F5F5F5',
-      }}>
-        <div style={{ marginBottom: 22 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-            <div style={{
-              width: 32,
-              height: 32,
-              borderRadius: 9,
-              background: '#FFFFFF',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}>
-              <span style={{ color: '#000', fontWeight: 900, fontSize: 15 }}>U</span>
+    <div className="min-h-screen flex bg-[hsl(0,0%,2%)]">
+      {/* Left — image */}
+      <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
+        <img
+          src={loginBg}
+          alt="Dashboard analytics"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(0,0%,2%)]/60 to-transparent" />
+        <div className="absolute bottom-12 left-12 max-w-md">
+          <h2 className="text-white text-3xl font-bold leading-tight mb-3">
+            Gerencie sua performance em um só lugar.
+          </h2>
+          <p className="text-white/60 text-sm">
+            Produção, métricas e resultados — tudo no United Growth Hub.
+          </p>
+        </div>
+      </div>
+
+      {/* Right — login form */}
+      <div className="flex-1 flex items-center justify-center p-6 lg:p-12">
+        <div className="w-full max-w-[400px]">
+          {/* Brand */}
+          <div className="flex items-center gap-3 mb-10">
+            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center">
+              <span className="text-black font-black text-lg">U</span>
             </div>
             <div>
-              <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: 2 }}>UNITED</div>
-              <div style={{ fontSize: 9, textTransform: 'uppercase', letterSpacing: 2, color: '#777' }}>
+              <div className="text-white text-sm font-extrabold tracking-[3px]">UNITED</div>
+              <div className="text-[hsl(0,0%,47%)] text-[10px] uppercase tracking-[3px]">
                 Growth Hub
               </div>
             </div>
           </div>
-          <h1 style={{ fontSize: 18, margin: 0 }}>Entrar</h1>
-          <p style={{ fontSize: 12, color: '#A0A0A0', marginTop: 6 }}>
+
+          <h1 className="text-white text-2xl font-bold mb-2">Bem-vindo de volta</h1>
+          <p className="text-[hsl(0,0%,55%)] text-sm mb-8">
             Acesse sua área de Produção e Performance.
           </p>
-        </div>
-        <form onSubmit={handleSubmit}>
-          <label style={{ display: 'block', fontSize: 11, marginBottom: 6, color: '#BBBBBB' }}>
-            Email
-          </label>
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-            style={{
-              width: '100%',
-              padding: '9px 11px',
-              borderRadius: 9,
-              border: '1px solid rgba(255,255,255,0.12)',
-              background: '#181818',
-              color: '#F5F5F5',
-              fontSize: 13,
-              marginBottom: 14,
-              outline: 'none',
-            }}
-          />
-          <label style={{ display: 'block', fontSize: 11, marginBottom: 6, color: '#BBBBBB' }}>
-            Senha
-          </label>
-          <input
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-            style={{
-              width: '100%',
-              padding: '9px 11px',
-              borderRadius: 9,
-              border: '1px solid rgba(255,255,255,0.12)',
-              background: '#181818',
-              color: '#F5F5F5',
-              fontSize: 13,
-              marginBottom: 16,
-              outline: 'none',
-            }}
-          />
-          {error && (
-            <div style={{ color: '#F97373', fontSize: 11, marginBottom: 10 }}>
-              {error}
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label className="block text-[hsl(0,0%,65%)] text-xs font-medium mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
+                placeholder="seu@email.com"
+                className="w-full px-4 py-3 rounded-xl border border-white/10 bg-[hsl(0,0%,8%)] text-white text-sm placeholder:text-white/25 outline-none focus:border-white/30 transition-colors"
+              />
             </div>
-          )}
-          <button
-            type="submit"
-            disabled={loading}
-            style={{
-              width: '100%',
-              padding: '9px 12px',
-              borderRadius: 9,
-              border: 'none',
-              cursor: loading ? 'default' : 'pointer',
-              background: '#FFFFFF',
-              color: '#000',
-              fontWeight: 700,
-              fontSize: 13,
-              marginBottom: 8,
-            }}
-          >
-            {loading ? 'Entrando...' : 'Entrar'}
-          </button>
-        </form>
+
+            <div>
+              <label className="block text-[hsl(0,0%,65%)] text-xs font-medium mb-2">
+                Senha
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={e => setPassword(e.target.value)}
+                required
+                placeholder="••••••••"
+                className="w-full px-4 py-3 rounded-xl border border-white/10 bg-[hsl(0,0%,8%)] text-white text-sm placeholder:text-white/25 outline-none focus:border-white/30 transition-colors"
+              />
+            </div>
+
+            {error && (
+              <div className="text-[hsl(0,70%,65%)] text-xs bg-[hsl(0,70%,65%)]/10 px-4 py-2.5 rounded-lg">
+                {error}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full py-3 rounded-xl bg-white text-black font-bold text-sm hover:bg-white/90 disabled:opacity-50 transition-all cursor-pointer disabled:cursor-default"
+            >
+              {loading ? 'Entrando...' : 'Entrar'}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
 }
-
