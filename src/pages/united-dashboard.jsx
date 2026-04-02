@@ -2,6 +2,7 @@ import { useState, useEffect, createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext.jsx";
 import { formatCurrency, formatPhone, buildCSV } from "../utils/format.js";
+import logoUnitedImg from "../assets/logo-united.png";
 
 /* ═══════════════════════════════════════════════
    THEME TOKENS — DARK & LIGHT
