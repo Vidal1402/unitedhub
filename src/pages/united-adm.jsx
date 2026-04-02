@@ -1,6 +1,7 @@
 import { useState, useEffect, createContext, useContext } from "react";
 import { useAuth } from "../auth/AuthContext.jsx";
 import { formatCurrency, formatPhone, buildCSV, formatCurrencyInput, parseCurrencyInput, formatDateInput, parseDateInput, formatPhoneInput, parsePhoneInput } from "../utils/format.js";
+import logoUnitedImg from "../assets/logo-united.png";
 
 const API_URL = (import.meta.env.VITE_API_URL || "https://united-hub-3a6p.onrender.com").replace(/\/$/, "");
 const FETCH_TIMEOUT_MS = 20000;
@@ -3911,16 +3912,11 @@ export default function AdmApp() {
           {/* Logo */}
           <div style={{ padding:collapsed?"18px 10px":"18px 16px", borderBottom:`1px solid ${t.b1}`, flexShrink:0 }}>
             <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-              <div style={{ width:32, height:32, flexShrink:0, borderRadius:9, background:t.accent, display:"flex", alignItems:"center", justifyContent:"center" }}>
-                <span style={{ color:t.accentTxt, fontWeight:900, fontSize:15 }}>U</span>
-              </div>
+              <img src={logoUnitedImg} alt="United Hub" style={{ height: collapsed ? 22 : 28, flexShrink:0 }} />
               {!collapsed && (
-                <div>
-                  <div style={{ color:t.t1, fontSize:12, fontWeight:800, letterSpacing:2 }}>UNITED</div>
-                  <div style={{ display:"flex", alignItems:"center", gap:4, marginTop:3 }}>
-                    <div style={{ width:5, height:5, borderRadius:"50%", background:C.red }}/>
-                    <span style={{ color:C.red, fontSize:8, fontWeight:800, letterSpacing:2, textTransform:"uppercase" }}>Painel ADM</span>
-                  </div>
+                <div style={{ display:"flex", alignItems:"center", gap:4, marginTop:3 }}>
+                  <div style={{ width:5, height:5, borderRadius:"50%", background:C.red }}/>
+                  <span style={{ color:C.red, fontSize:8, fontWeight:800, letterSpacing:2, textTransform:"uppercase" }}>Painel ADM</span>
                 </div>
               )}
             </div>

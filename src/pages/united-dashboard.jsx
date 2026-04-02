@@ -2,6 +2,7 @@ import { useState, useEffect, createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext.jsx";
 import { formatCurrency, formatPhone, buildCSV } from "../utils/format.js";
+import logoUnitedImg from "../assets/logo-united.png";
 
 /* ═══════════════════════════════════════════════
    THEME TOKENS — DARK & LIGHT
@@ -2209,15 +2210,7 @@ export default function DashboardApp() {
         <aside style={{ width:collapsed?52:200, background:t.bg1, borderRight:`1px solid ${t.b1}`, display:"flex", flexDirection:"column", transition:"width .26s cubic-bezier(.4,0,.2,1)", flexShrink:0, overflow:"hidden" }}>
           <div style={{ padding:collapsed?"20px 10px":"20px 16px", borderBottom:`1px solid ${t.b1}`, flexShrink:0 }}>
             <div style={{ display:"flex", alignItems:"center", gap:10 }}>
-              <div style={{ width:30, height:30, flexShrink:0, borderRadius:8, background:t.accent, display:"flex", alignItems:"center", justifyContent:"center" }}>
-                <span style={{ color:t.accentText, fontWeight:900, fontSize:14 }}>U</span>
-              </div>
-              {!collapsed && (
-                <div>
-                  <div style={{ color:t.t1, fontSize:12, fontWeight:800, letterSpacing:2 }}>UNITED</div>
-                  <div style={{ color:t.t4, fontSize:7, letterSpacing:3, textTransform:"uppercase" }}>Growth Hub</div>
-                </div>
-              )}
+              <img src={logoUnitedImg} alt="United Hub" style={{ height: collapsed ? 22 : 28, flexShrink:0 }} />
             </div>
           </div>
 
