@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext.jsx';
 import logoUnited from '../assets/logo-united.png';
+import loginBg from '../assets/login-bg.jpg';
 
 const API_URL = import.meta.env.VITE_API_URL || 'https://united-hub-3a6p.onrender.com';
 
@@ -50,22 +51,15 @@ export default function Login() {
         position: 'relative',
         overflow: 'hidden',
         display: 'none',
-        background: '#f5f5f5',
       }} className="login-image-panel">
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: 48,
-        }}>
-          <img src={logoUnited} alt="United Hub" style={{ width: 220, marginBottom: 32 }} />
-          <h2 style={{ color: '#000', fontSize: 24, fontWeight: 700, textAlign: 'center', lineHeight: 1.4, marginBottom: 12 }}>
+        <img src={loginBg} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%)' }} />
+        <div style={{ position: 'absolute', bottom: 48, left: 48, maxWidth: 360 }}>
+          <img src={logoUnited} alt="United Hub" style={{ height: 32, marginBottom: 20, filter: 'brightness(0) invert(1)' }} />
+          <h2 style={{ color: '#fff', fontSize: 22, fontWeight: 700, lineHeight: 1.4, marginBottom: 8 }}>
             Gerencie sua performance em um só lugar.
           </h2>
-          <p style={{ color: '#888', fontSize: 14, textAlign: 'center', maxWidth: 320 }}>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13 }}>
             Produção, métricas e resultados — tudo no United Hub.
           </p>
         </div>
